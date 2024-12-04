@@ -29,7 +29,7 @@ namespace UI.Offer
 
 		private void OnClick()
 		{
-			//Show offer dialog by id
+			_dialogManager.ShowModal("OfferDialog");
 		}
 	}
 }

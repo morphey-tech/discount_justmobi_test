@@ -9,18 +9,13 @@ namespace Core.Dialog.Manager
 	public sealed class DialogManager
   {
     private readonly IDialogLoader _dialogLoader;
-    
-    private GameObject _dialogContainer = null!;
+    private readonly GameObject _dialogContainer;
 
     [Inject]
     private DialogManager(IDialogLoader dialogLoader)
     {
       _dialogLoader = dialogLoader;
-    }
-    
-    public void AttachRootContainer(GameObject root)
-    {
-      _dialogContainer = root;
+      _dialogContainer = GameObject.Find("Canvas");
     }
 
     public void ShowModal(string dialogId)

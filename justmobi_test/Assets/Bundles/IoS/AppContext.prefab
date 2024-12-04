@@ -48,7 +48,8 @@ MonoBehaviour:
   parentReference:
     TypeName: 
   autoRun: 1
-  autoInjectGameObjects: []
+  autoInjectGameObjects:
+  - {fileID: 0}
   <ApplicationDescriptors>k__BackingField: {fileID: 8252201429882503402}
 --- !u!114 &8252201429882503402
 MonoBehaviour:
