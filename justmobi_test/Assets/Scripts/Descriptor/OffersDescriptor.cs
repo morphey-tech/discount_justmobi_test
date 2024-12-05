@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Descriptor
@@ -9,6 +10,7 @@ namespace Descriptor
 		[field: SerializeField]
 		public List<OfferData> Collection { get; private set; } = null!;
 		
+		[Serializable]
 		public class OfferData
 		{
 			public string Id;

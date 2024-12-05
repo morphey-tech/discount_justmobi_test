@@ -1,4 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Core.Dialog.Controller
@@ -6,10 +8,13 @@ namespace Core.Dialog.Controller
   public sealed class UIDialogController
   {
     public string DialogId { get; private set; }
-    public GameObject? DialogController { get; private set; }
+    public IDialog? DialogInstance { get; private set; }
 
     public bool Opened { get; set; }
     public bool Hiding { get; set; }
+
+    [CanBeNull]
+    private DOTweenAnimation _doTweenAnimation;
 
     public UIDialogController(string dialogId)
     {
@@ -18,29 +23,34 @@ namespace Core.Dialog.Controller
 
     public void SetDialog(GameObject dialogController)
     {
-      DialogController = dialogController;
+      DialogInstance = dialogController.GetComponent<IDialog>();
+      _doTweenAnimation = dialogController.GetComponent<DOTweenAnimation>();
     }
 
-    public async UniTask ShowAsync()
+    public async UniTask ShowAsync(params object[] initParam)
     {
-      /*if (DialogAnimator == null) {
-        DialogController!.gameObject.SetActive(!Muted);
+      DialogInstance!.Configure(initParam);
+      if (_doTweenAnimation == null) {
+        DialogInstance!.Show();
+        Opened = true;
       }
       else {
-        await DialogAnimator.PlayOpenAnimation();
+        _doTweenAnimation.DOPlayById("Open");
+        await UniTask.WaitWhile(() => _doTweenAnimation.hasOnComplete);
         await UniTask.Yield();
-        DialogController!.gameObject.SetActive(!Muted);
-      }*/
-      Opened = true;
+        DialogInstance!.Show();
+        Opened = true;
+      }
     }
 
     public async UniTask HideAsync()
     {
       Hiding = true;
-      /*if (DialogAnimator != null) {
-        await DialogAnimator.PlayCloseAnimation();
-      }*/
-      DialogController!.gameObject.SetActive(false);
+      if (_doTweenAnimation != null) {
+        _doTweenAnimation.DOPlayById("Close");
+        await UniTask.WaitWhile(() => _doTweenAnimation.hasOnComplete);
+      }
+      DialogInstance!.Hide();
       Opened = false;
     }
   }

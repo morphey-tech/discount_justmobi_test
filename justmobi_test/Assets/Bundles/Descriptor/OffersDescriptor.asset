@@ -12,3 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb7f7daf8cd4f539cebccc019620457, type: 3}
   m_Name: OffersDescriptor
   m_EditorClassIdentifier: 
+  <Collection>k__BackingField:
+  - Id: offer_1
+    Title: Offer 1
+    Description: Test offer description
+    Items:
+    - item_1
+    Price: 10.25
+    Discount: 25
+    IconId: icon_1

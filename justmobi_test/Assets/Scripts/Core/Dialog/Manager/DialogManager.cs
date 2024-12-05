@@ -18,18 +18,18 @@ namespace Core.Dialog.Manager
       _dialogContainer = GameObject.Find("Canvas");
     }
 
-    public void ShowModal(string dialogId)
+    public void ShowModal(string dialogId, params object[] initParam)
     {
-      ShowModalAsync(dialogId).Forget();
+      ShowModalAsync(dialogId, initParam).Forget();
     }
 
-    public async UniTask<GameObject> ShowModalAsync(string dialogId)
+    public async UniTask<GameObject> ShowModalAsync(string dialogId, params object[] initParam)
     {
       UIDialogController uiDialogController = new(dialogId);
         GameObject instance =
             await _dialogLoader.LoadDialogAsync(dialogId, _dialogContainer);
         uiDialogController.SetDialog(instance);
-        await uiDialogController.ShowAsync();
+        await uiDialogController.ShowAsync(initParam);
         return instance;
     }
 
