@@ -17,8 +17,8 @@ MonoBehaviour:
     Title: Offer 1
     Description: Test offer description
     Items:
-    - SpriteId: sprite_1
+    - SpriteId: sprite_4
       Amount: 10
     Price: 10.25
-    Discount: 25
-    IconId: icon_1
+    DiscountPercent: 0
+    IconId: sprite_1
