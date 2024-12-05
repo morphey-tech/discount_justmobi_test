@@ -27,7 +27,7 @@ namespace Descriptor
 			{
 				for (int j = Collection.Count - 1; j >= 0; j--)
 				{
-					if (i == j)
+					if (i == j || string.IsNullOrEmpty(Collection[j].Id))
 					{
 						continue;
 					}

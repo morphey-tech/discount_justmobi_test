@@ -18,7 +18,7 @@ namespace Descriptor
 			public string Description;
 			public List<OfferReward> Items;
 			public float Price;
-			public float Discount;
+			public float DiscountPercent;
 			public string IconId;
 		}
 

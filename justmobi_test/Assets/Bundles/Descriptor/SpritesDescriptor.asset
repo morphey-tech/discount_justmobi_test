@@ -15,25 +15,43 @@ MonoBehaviour:
   <Collection>k__BackingField:
   - Id: sprite_1
     Asset:
-      m_AssetGUID: 
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 0
+      m_AssetGUID: 512a1a45f984889408147e16ad525e8c
+      m_SubObjectName: offer_icon_1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 1
   - Id: 'sprite_2 '
     Asset:
-      m_AssetGUID: 
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 0
+      m_AssetGUID: 644e3b898009c204bb9d70a1d66e6a4e
+      m_SubObjectName: offer_icon_2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 1
   - Id: 'sprite_3 '
     Asset:
-      m_AssetGUID: 
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 0
+      m_AssetGUID: 05df8d27cd1f24b498d5aeb2c4e75eae
+      m_SubObjectName: offer_icon_3
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 1
   - Id: sprite_4
     Asset:
-      m_AssetGUID: 
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 0
+      m_AssetGUID: 6a6b3f8e061a2554185d563bc3914e55
+      m_SubObjectName: offer_item_1
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 1
+  - Id: sprite_5
+    Asset:
+      m_AssetGUID: 3467701fbf6a18147b329bee3397d741
+      m_SubObjectName: offer_item_2
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 1
+  - Id: sprite_6
+    Asset:
+      m_AssetGUID: 69fd5fa4e19cddf4d98f60b5777994d6
+      m_SubObjectName: offer_item_3
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 1
