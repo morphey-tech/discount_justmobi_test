@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Core.UI.Service;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using VContainer;
@@ -8,26 +9,25 @@ namespace Core.Dialog.Service
 {
 	public class AddresableDialogLoadService : IDialogLoader
 	{
-		private readonly IObjectResolver _objectResolver;
+		private readonly UIService _uiService;
 		
 		[Inject]
-		private AddresableDialogLoadService(IObjectResolver objectResolver)
+		private AddresableDialogLoadService(UIService uiService)
 		{
-			_objectResolver = objectResolver;
+			_uiService = uiService;
 		}
 		
 		public async UniTask<GameObject> LoadDialogAsync(string dialogId,
 		                                              GameObject container)
 		{
-			GameObject instance = await Addressables.InstantiateAsync(dialogId, container.transform);
+			GameObject instance = await _uiService.CreateAsync(dialogId, container.transform);
 			instance.name = dialogId;
-			_objectResolver.InjectGameObject(instance);
 			return instance;
 		}
 
 		public void Unload(GameObject dialogController)
 		{
-			Addressables.ReleaseInstance(dialogController);
+			_uiService.Unload(dialogController);
 		}
 	}
 }

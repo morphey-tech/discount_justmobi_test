@@ -1,5 +1,6 @@
 ﻿using Core.Dialog.Controller;
 using Core.Dialog.Manager;
+using Core.UI.Service;
 using Cysharp.Threading.Tasks;
 using Descriptor;
 using TMPro;
@@ -34,6 +35,7 @@ namespace UI.Offer
 		private OffersDescriptor _offersDescriptor = null!;
 		private SpritesDescriptor _spritesDescriptor = null!;
 		private DialogManager _dialogManager = null!;
+		private UIService _uiService = null!;
 
 		private void Awake()
 		{
@@ -43,11 +45,13 @@ namespace UI.Offer
 		[Inject]
 		private void Construct(OffersDescriptor offersDescriptor,
 		                       SpritesDescriptor spritesDescriptor,
-		                       DialogManager dialogManager)
+		                       DialogManager dialogManager,
+		                       UIService uiService)
 		{
 			_offersDescriptor = offersDescriptor;
 			_spritesDescriptor = spritesDescriptor;
 			_dialogManager = dialogManager;
+			_uiService = uiService;
 		}
 
 		async UniTask IDialog.Configure(params object[] initParam)
@@ -58,16 +62,12 @@ namespace UI.Offer
 
 			for (int i = 0; i < offerData.Items.Count; i++)
 			{
-				GameObject kek = await Addressables.InstantiateAsync("OfferItem", _itemsContent);
-				Image image = kek.GetComponentInChildren<Image>();
-				TextMeshProUGUI text = kek.GetComponentInChildren<TextMeshProUGUI>();
-				string spriteId = offerData.Items[i].SpriteId;
-				Sprite itemSprite = await Addressables.LoadAssetAsync<Sprite>(_spritesDescriptor.Require(spriteId).AssetGUID);
-				image.sprite = itemSprite;
-				text.text = $"{offerData.Items[i].Amount}";
+				GameObject itemGo = await _uiService.CreateAsync("OfferItem", _itemsContent);
+				OfferItem item = itemGo.GetComponent<OfferItem>();
+				await item.Configure(offerData.Items[i]);
 			}
 
-			Sprite iconSprite = await Addressables.LoadAssetAsync<Sprite>
+			Sprite iconSprite = await _uiService.LoadAsync<Sprite>
 					(_spritesDescriptor.Require(offerData.IconId).AssetGUID);
 			_offerIcon.sprite = iconSprite;
 			_originalPriceText.text = $"${offerData.Price - offerData.Price * 0.01f * offerData.DiscountPercent}";

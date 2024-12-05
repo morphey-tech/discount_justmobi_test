@@ -1,8 +1,8 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Core.UI.Service;
+using Cysharp.Threading.Tasks;
 using Descriptor;
 using TMPro;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 using VContainer;
 
@@ -16,17 +16,19 @@ namespace UI.Offer
 		private TextMeshProUGUI _amount = null!;
 
 		private SpritesDescriptor _spritesDescriptor = null!;
+		private UIService _uiService = null!;
 		
 		[Inject]
-		private void Construct(SpritesDescriptor spritesDescriptor)
+		private void Construct(SpritesDescriptor spritesDescriptor, UIService uiService)
 		{
 			_spritesDescriptor = spritesDescriptor;
+			_uiService = uiService;
 		}
 		
 		public async UniTask Configure(OffersDescriptor.OfferReward descriptor)
 		{
-			AssetReference spriteId = _spritesDescriptor.Require(descriptor.SpriteId);
-			Sprite iconSprite = await Addressables.LoadAssetAsync<Sprite>(spriteId);
+			string spriteId = _spritesDescriptor.Require(descriptor.SpriteId).AssetGUID;
+			Sprite iconSprite = await _uiService.LoadAsync<Sprite>(spriteId);
 			_icon.sprite = iconSprite;
 			_amount.text = $"{descriptor.Amount}";
 		}

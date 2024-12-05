@@ -1,5 +1,6 @@
 using Core.Dialog.Manager;
 using Core.Dialog.Service;
+using Core.UI.Service;
 using Descriptor;
 using UnityEngine;
 using VContainer;
@@ -14,9 +15,10 @@ namespace DI
 		
 		protected override void Configure(IContainerBuilder builder)
 		{
+			builder.Register<UIService>(Lifetime.Singleton);
 			builder.Register<DialogManager>(Lifetime.Singleton);
 			builder.Register<AddresableDialogLoadService>(Lifetime.Singleton).AsImplementedInterfaces();
-
+			
 			builder.RegisterInstance(ApplicationDescriptors.OffersDescriptor);
 			builder.RegisterInstance(ApplicationDescriptors.SpritesDescriptor);
 		}

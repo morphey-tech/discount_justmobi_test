@@ -10,6 +10,8 @@ namespace Core.Dialog.Manager
 {
   public sealed class DialogManager
   {
+    private const string CONTAINER_NAME = "Canvas";
+    
     private readonly IDialogLoader _dialogLoader;
     private readonly GameObject _dialogContainer;
 
@@ -19,7 +21,7 @@ namespace Core.Dialog.Manager
     private DialogManager(IDialogLoader dialogLoader)
     {
       _dialogLoader = dialogLoader;
-      _dialogContainer = GameObject.Find("Canvas");
+      _dialogContainer = GameObject.Find(CONTAINER_NAME);
     }
 
     public void ShowModal(string dialogId, params object[] initParam)
