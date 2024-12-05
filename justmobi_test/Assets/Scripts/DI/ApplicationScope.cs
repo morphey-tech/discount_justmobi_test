@@ -18,7 +18,6 @@ namespace DI
 			builder.Register<DialogManager>(Lifetime.Singleton);
 			builder.Register<AddresableDialogLoadService>(Lifetime.Singleton).AsImplementedInterfaces();
 
-			builder.RegisterInstance(ApplicationDescriptors.ItemsDescriptor);
 			builder.RegisterInstance(ApplicationDescriptors.OffersDescriptor);
 			builder.RegisterInstance(ApplicationDescriptors.SpritesDescriptor);
 		}

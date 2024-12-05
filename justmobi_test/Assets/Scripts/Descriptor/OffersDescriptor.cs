@@ -16,10 +16,17 @@ namespace Descriptor
 			public string Id;
 			public string Title;
 			public string Description;
-			public List<string> Items;
+			public List<OfferReward> Items;
 			public float Price;
 			public float Discount;
 			public string IconId;
+		}
+
+		[Serializable]
+		public class OfferReward
+		{
+			public string SpriteId;
+			public int Amount;
 		}
 	}
 }

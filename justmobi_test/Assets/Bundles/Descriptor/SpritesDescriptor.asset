@@ -12,3 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ad7627d6ea4866a95de54f5fb5f46e, type: 3}
   m_Name: SpritesDescriptor
   m_EditorClassIdentifier: 
+  <Collection>k__BackingField:
+  - Id: sprite_1
+    Asset:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Id: 'sprite_2 '
+    Asset:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Id: 'sprite_3 '
+    Asset:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Id: sprite_4
+    Asset:
+      m_AssetGUID: 
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
