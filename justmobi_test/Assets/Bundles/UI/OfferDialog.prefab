@@ -187,6 +187,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0c689b43204d1792959f6b71a94fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _headerText: {fileID: 3660904793304028034}
+  _descriptionText: {fileID: 5331390419707204310}
+  _itemsContent: {fileID: 0}
+  _offerIcon: {fileID: 0}
+  _originalPriceText: {fileID: 0}
+  _discountPriceText: {fileID: 0}
+  _discountLabel: {fileID: 0}
+  _discountText: {fileID: 0}
+  _button: {fileID: 0}
 --- !u!1 &1763938645964595399
 GameObject:
   m_ObjectHideFlags: 0
