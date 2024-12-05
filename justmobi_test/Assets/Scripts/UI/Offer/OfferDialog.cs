@@ -55,13 +55,24 @@ namespace UI.Offer
 			OffersDescriptor.OfferData offerData = _offersDescriptor.Require(initParam[0].ToString());
 			_headerText.text = offerData.Title;
 			_descriptionText.text = offerData.Description;
-			//fill items
+
+			for (int i = 0; i < offerData.Items.Count; i++)
+			{
+				GameObject kek = await Addressables.InstantiateAsync("OfferItem", _itemsContent);
+				Image image = kek.GetComponentInChildren<Image>();
+				TextMeshProUGUI text = kek.GetComponentInChildren<TextMeshProUGUI>();
+				string spriteId = offerData.Items[i].SpriteId;
+				Sprite itemSprite = await Addressables.LoadAssetAsync<Sprite>(_spritesDescriptor.Require(spriteId).AssetGUID);
+				image.sprite = itemSprite;
+				text.text = $"{offerData.Items[i].Amount}";
+			}
+
 			Sprite iconSprite = await Addressables.LoadAssetAsync<Sprite>
 					(_spritesDescriptor.Require(offerData.IconId).AssetGUID);
 			_offerIcon.sprite = iconSprite;
-			_originalPriceText.text = $"${offerData.Price}";
+			_originalPriceText.text = $"${offerData.Price - offerData.Price * 0.01f * offerData.DiscountPercent}";
 			_discountPriceText.enabled = offerData.DiscountPercent > 0f;
-			_discountPriceText.text = $"<s>${offerData.Price - offerData.Price * 0.01f * offerData.DiscountPercent}</s>";
+			_discountPriceText.text = $"<s>${offerData.Price}</s>";
 			_discountLabel.SetActive(offerData.DiscountPercent > 0f);
 			_discountText.text = $"{offerData.DiscountPercent}%";
 		}
