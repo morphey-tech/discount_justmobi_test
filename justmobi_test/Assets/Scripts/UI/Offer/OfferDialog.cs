@@ -84,7 +84,7 @@ namespace UI.Offer
 			_discountPriceText.enabled = offerData.DiscountPercent > 0f;
 			_discountPriceText.text = $"<s>${offerData.Price}</s>";
 			_discountLabel.SetActive(offerData.DiscountPercent > 0f);
-			_discountText.text = $"{offerData.DiscountPercent}%";
+			_discountText.text = $"-{offerData.DiscountPercent}%";
 		}
 
 		void IDialog.Show()
