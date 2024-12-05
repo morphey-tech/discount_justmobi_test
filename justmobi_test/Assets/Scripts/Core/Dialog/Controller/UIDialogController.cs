@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -6,6 +7,9 @@ namespace Core.Dialog.Controller
 {
   public sealed class UIDialogController
   {
+    private const string OPEN_ANIMATION_ID = "Open";
+    private const string CLOSE_ANIMATION_ID = "Close";
+    
     public string DialogId { get; private set; }
     public IDialog? DialogInstance { get; private set; }
 
@@ -28,28 +32,30 @@ namespace Core.Dialog.Controller
     public async UniTask ShowAsync(params object[] initParam)
     {
       DialogInstance!.Configure(initParam);
-      if (_doTweenAnimation == null) {
-        DialogInstance!.Show();
-        Opened = true;
+      if (_doTweenAnimation != null)
+      {
+        await WaitAnimation(OPEN_ANIMATION_ID);
       }
-      else {
-        _doTweenAnimation.DOPlayById("Open");
-        await UniTask.WaitWhile(() => _doTweenAnimation.hasOnComplete);
-        await UniTask.Yield();
-        DialogInstance!.Show();
-        Opened = true;
-      }
+      DialogInstance!.Show();
+      Opened = true;
     }
 
     public async UniTask HideAsync()
     {
       Hiding = true;
-      if (_doTweenAnimation != null) {
-        _doTweenAnimation.DOPlayById("Close");
-        await UniTask.WaitWhile(() => _doTweenAnimation.hasOnComplete);
+      if (_doTweenAnimation != null)
+      {
+        await WaitAnimation(CLOSE_ANIMATION_ID);
       }
       DialogInstance!.Hide();
       Opened = false;
+    }
+
+    private async UniTask WaitAnimation(string animationId)
+    {
+        _doTweenAnimation!.DOPlayById(animationId);
+        await UniTask.Delay(TimeSpan.FromSeconds(_doTweenAnimation.duration));
+        await UniTask.Yield();
     }
   }
 }
