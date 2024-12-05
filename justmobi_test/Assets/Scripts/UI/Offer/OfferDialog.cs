@@ -5,7 +5,6 @@ using Cysharp.Threading.Tasks;
 using Descriptor;
 using TMPro;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 using VContainer;
 
@@ -13,12 +12,17 @@ namespace UI.Offer
 {
 	public sealed class OfferDialog : MonoBehaviour, IDialog
 	{
+		private const string OFFER_ITEM_ASSET_ID = "OfferItem";
+		private const int ITEMS_PER_ROW = 3;
+		
 		[SerializeField]
 		private TextMeshProUGUI _headerText = null!;
 		[SerializeField]
 		private TextMeshProUGUI _descriptionText = null!;
 		[SerializeField]
-		private RectTransform _itemsContent = null!;
+		private RectTransform _itemsFirstRow = null!;
+		[SerializeField]
+		private RectTransform _itemsSecondRow = null!;
 		[SerializeField]
 		private Image _offerIcon = null!;
 		[SerializeField]
@@ -62,7 +66,8 @@ namespace UI.Offer
 
 			for (int i = 0; i < offerData.Items.Count; i++)
 			{
-				GameObject itemGo = await _uiService.CreateAsync("OfferItem", _itemsContent);
+				GameObject itemGo = await _uiService.CreateAsync
+						(OFFER_ITEM_ASSET_ID, i <= ITEMS_PER_ROW ? _itemsFirstRow : _itemsSecondRow);
 				OfferItem item = itemGo.GetComponent<OfferItem>();
 				await item.Configure(offerData.Items[i]);
 			}

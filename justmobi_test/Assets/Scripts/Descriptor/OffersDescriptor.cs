@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Descriptor
@@ -30,12 +31,14 @@ namespace Descriptor
 			public List<OfferReward> Items;
 			public float Price;
 			public float DiscountPercent;
+			[ValueDropdown("@DescriptorParamsHelper.GetAvailableSpritesIds()")]
 			public string IconId;
 		}
 
 		[Serializable]
 		public class OfferReward
 		{
+			[ValueDropdown("@DescriptorParamsHelper.GetAvailableSpritesIds()")]
 			public string SpriteId;
 			public int Amount;
 		}

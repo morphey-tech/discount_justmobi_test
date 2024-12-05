@@ -1,4 +1,5 @@
 ﻿using Core.Dialog.Manager;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
@@ -8,7 +9,9 @@ namespace UI.Offer
 	[RequireComponent(typeof(Button))]
 	public sealed class OfferButton : MonoBehaviour
 	{
-		[field: SerializeField] 
+		private const string OFFER_DIALOG_ASSET_ID = "OfferDialog";
+		
+		[field: SerializeField, ValueDropdown("@DescriptorParamsHelper.GetAvailableOffersIds()")] 
 		private string _offerId = null!;
 		
 		private Button _button = null!;
@@ -29,7 +32,7 @@ namespace UI.Offer
 
 		private void OnClick()
 		{
-			_dialogManager.ShowModal("OfferDialog", _offerId);
+			_dialogManager.ShowModal(OFFER_DIALOG_ASSET_ID, _offerId);
 		}
 	}
 }
