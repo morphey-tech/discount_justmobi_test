@@ -46,6 +46,11 @@ namespace UI.Offer
 			_button.onClick.AddListener(OnClick);
 		}
 
+		private void OnDestroy()
+		{
+			_button.onClick.RemoveAllListeners();
+		}
+
 		[Inject]
 		private void Construct(OffersDescriptor offersDescriptor,
 		                       SpritesDescriptor spritesDescriptor,

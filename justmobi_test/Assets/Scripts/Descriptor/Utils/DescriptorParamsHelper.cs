@@ -6,6 +6,9 @@ namespace Descriptor.Utils
 {
 	public static class DescriptorParamsHelper
 	{
+		public const string AVAILABLE_SPRITES_LIST = "@DescriptorParamsHelper.GetAvailableSpritesIds()";
+		public const string AVAILABLE_OFFERS_LIST = "@DescriptorParamsHelper.GetAvailableOffersIds()";
+		
 		private static IEnumerable GetAvailableSpritesIds()
 		{
 			const string root = "Assets/Bundles/Descriptor/SpritesDescriptor.asset";

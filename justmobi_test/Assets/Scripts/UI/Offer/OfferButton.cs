@@ -1,4 +1,5 @@
 ﻿using Core.Dialog.Manager;
+using Descriptor.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +12,7 @@ namespace UI.Offer
 	{
 		private const string OFFER_DIALOG_ASSET_ID = "OfferDialog";
 		
-		[field: SerializeField, ValueDropdown("@DescriptorParamsHelper.GetAvailableOffersIds()")] 
+		[field: SerializeField, ValueDropdown(DescriptorParamsHelper.AVAILABLE_OFFERS_LIST)] 
 		private string _offerId = null!;
 		
 		private Button _button = null!;
@@ -22,6 +23,11 @@ namespace UI.Offer
 		{
 			_button = GetComponent<Button>();
 			_button.onClick.AddListener(OnClick);
+		}
+
+		private void OnDestroy()
+		{
+			_button.onClick.RemoveAllListeners();
 		}
 
 		[Inject]

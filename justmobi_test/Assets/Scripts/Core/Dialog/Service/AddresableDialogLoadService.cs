@@ -1,9 +1,7 @@
 ﻿using Core.UI.Service;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using VContainer;
-using VContainer.Unity;
 
 namespace Core.Dialog.Service
 {
