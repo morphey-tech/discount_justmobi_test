@@ -20,5 +20,5 @@ MonoBehaviour:
     - SpriteId: sprite_4
       Amount: 10
     Price: 10.25
-    DiscountPercent: 0
+    DiscountPercent: 10
     IconId: sprite_1

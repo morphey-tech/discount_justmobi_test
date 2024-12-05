@@ -1,6 +1,5 @@
-﻿using System.Globalization;
-using System.Threading;
-using Core.Dialog.Controller;
+﻿using Core.Dialog.Controller;
+using Core.Dialog.Manager;
 using Cysharp.Threading.Tasks;
 using Descriptor;
 using TMPro;
@@ -34,6 +33,7 @@ namespace UI.Offer
 
 		private OffersDescriptor _offersDescriptor = null!;
 		private SpritesDescriptor _spritesDescriptor = null!;
+		private DialogManager _dialogManager = null!;
 
 		private void Awake()
 		{
@@ -42,10 +42,12 @@ namespace UI.Offer
 
 		[Inject]
 		private void Construct(OffersDescriptor offersDescriptor,
-		                       SpritesDescriptor spritesDescriptor)
+		                       SpritesDescriptor spritesDescriptor,
+		                       DialogManager dialogManager)
 		{
 			_offersDescriptor = offersDescriptor;
 			_spritesDescriptor = spritesDescriptor;
+			_dialogManager = dialogManager;
 		}
 
 		async UniTask IDialog.Configure(params object[] initParam)
@@ -59,9 +61,9 @@ namespace UI.Offer
 			_offerIcon.sprite = iconSprite;
 			_originalPriceText.text = $"${offerData.Price}";
 			_discountPriceText.enabled = offerData.DiscountPercent > 0f;
-			_discountPriceText.text = $"{offerData.Price - offerData.Price * 0.01f * offerData.DiscountPercent}";
+			_discountPriceText.text = $"<s>${offerData.Price - offerData.Price * 0.01f * offerData.DiscountPercent}</s>";
 			_discountLabel.SetActive(offerData.DiscountPercent > 0f);
-			_discountText.text = $"{offerData.DiscountPercent}";
+			_discountText.text = $"{offerData.DiscountPercent}%";
 		}
 
 		void IDialog.Show()
@@ -76,7 +78,7 @@ namespace UI.Offer
 
 		private void OnClick()
 		{
-			
+			_dialogManager.Hide(gameObject);
 		}
 	}
 }
