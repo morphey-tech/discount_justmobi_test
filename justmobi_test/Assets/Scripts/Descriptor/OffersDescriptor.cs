@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Descriptor
@@ -9,6 +10,16 @@ namespace Descriptor
 	{
 		[field: SerializeField]
 		public List<OfferData> Collection { get; private set; } = null!;
+		
+		public OfferData Require(string id)
+		{
+			return Collection.First(d => d.Id == id);
+		}
+
+		public OfferData? Get(string id)
+		{
+			return Collection.FirstOrDefault(d => d.Id == id);
+		}
 		
 		[Serializable]
 		public class OfferData

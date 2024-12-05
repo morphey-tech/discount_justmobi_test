@@ -1,6 +1,4 @@
-﻿using Cysharp.Threading.Tasks;
-
-namespace Core.Dialog.Controller
+﻿namespace Core.Dialog.Controller
 {
 	public interface IDialog
 	{

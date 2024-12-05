@@ -3,6 +3,7 @@ using Core.Dialog.Controller;
 using Descriptor;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 using VContainer;
 
@@ -30,19 +31,23 @@ namespace UI.Offer
 		private Button _button = null!;
 
 		private OffersDescriptor _offersDescriptor = null!;
+		private SpritesDescriptor _spritesDescriptor = null!;
 		
 		[Inject]
-		private void Construct(OffersDescriptor offersDescriptor)
+		private void Construct(OffersDescriptor offersDescriptor,
+		                       SpritesDescriptor spritesDescriptor)
 		{
 			_offersDescriptor = offersDescriptor;
+			_spritesDescriptor = spritesDescriptor;
 		}
 		
 		public void Configure(params object[] initParam)
 		{
-			OffersDescriptor.OfferData offerData = _offersDescriptor.Collection.
-					First(d => d.Id == initParam[0].ToString());
+			OffersDescriptor.OfferData offerData = _offersDescriptor.Require(initParam[0].ToString());
 			_headerText.text = offerData.Title;
 			_descriptionText.text = offerData.Description;
+			//fill items
+			//_offerIcon.sprite = _spritesDescriptor.Require(offerData.IconId);
 		}
 		
 		public void Show()

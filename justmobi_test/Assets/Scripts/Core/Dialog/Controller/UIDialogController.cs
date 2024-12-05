@@ -1,6 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Core.Dialog.Controller
@@ -13,8 +12,7 @@ namespace Core.Dialog.Controller
     public bool Opened { get; set; }
     public bool Hiding { get; set; }
 
-    [CanBeNull]
-    private DOTweenAnimation _doTweenAnimation;
+    private DOTweenAnimation? _doTweenAnimation;
 
     public UIDialogController(string dialogId)
     {

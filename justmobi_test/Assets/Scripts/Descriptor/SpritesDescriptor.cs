@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -12,6 +13,16 @@ namespace Descriptor
 		[field: SerializeField]
 		public List<SpriteData> Collection { get; private set; } = null!;
 
+		public AssetReference Require(string id)
+		{
+			return Collection.First(d => d.Id == id).Asset;
+		}
+
+		public AssetReference? Get(string id)
+		{
+			return Collection.FirstOrDefault(d => d.Id == id)?.Asset;
+		}
+		
 		[Serializable]
 		public class SpriteData
 		{

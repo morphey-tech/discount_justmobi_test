@@ -6,7 +6,7 @@ using VContainer;
 
 namespace Core.Dialog.Manager
 {
-	public sealed class DialogManager
+  public sealed class DialogManager
   {
     private readonly IDialogLoader _dialogLoader;
     private readonly GameObject _dialogContainer;
@@ -26,11 +26,11 @@ namespace Core.Dialog.Manager
     public async UniTask<GameObject> ShowModalAsync(string dialogId, params object[] initParam)
     {
       UIDialogController uiDialogController = new(dialogId);
-        GameObject instance =
-            await _dialogLoader.LoadDialogAsync(dialogId, _dialogContainer);
-        uiDialogController.SetDialog(instance);
-        await uiDialogController.ShowAsync(initParam);
-        return instance;
+      GameObject instance =
+          await _dialogLoader.LoadDialogAsync(dialogId, _dialogContainer);
+      uiDialogController.SetDialog(instance);
+      await uiDialogController.ShowAsync(initParam);
+      return instance;
     }
 
     public GameObject DialogContainer => _dialogContainer;

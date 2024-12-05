@@ -1,7 +1,6 @@
 using Core.Dialog.Manager;
 using Core.Dialog.Service;
 using Descriptor;
-using UI.Offer;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
