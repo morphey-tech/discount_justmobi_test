@@ -79,9 +79,9 @@ namespace UI.Offer
 			Sprite iconSprite = await _uiService.LoadAsync<Sprite>
 					(_spritesDescriptor.Require(offerData.IconId).AssetGUID);
 			_offerIcon.sprite = iconSprite;
-			_originalPriceText.text = $"${offerData.Price - offerData.Price * 0.01f * offerData.DiscountPercent}";
+			_originalPriceText.text = $"${offerData.Price - offerData.Price * 0.01f * offerData.DiscountPercent:F2}";
 			_discountPriceText.enabled = offerData.DiscountPercent > 0f;
-			_discountPriceText.text = $"<s>${offerData.Price}</s>";
+			_discountPriceText.text = $"<s>${offerData.Price:F2}</s>";
 			_discountLabel.SetActive(offerData.DiscountPercent > 0f);
 			_discountText.text = $"-{offerData.DiscountPercent}%";
 		}

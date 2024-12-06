@@ -19,14 +19,14 @@ MonoBehaviour:
     Items:
     - SpriteId: sprite_4
       Amount: 10
-    - SpriteId: 
-      Amount: 0
-    - SpriteId: 
-      Amount: 0
+    - SpriteId: sprite_5
+      Amount: 15
+    - SpriteId: sprite_6
+      Amount: 25
     Price: 10.25
     DiscountPercent: 10
     IconId: sprite_1
-  <OfferItem>k__BackingField:
+  <OfferItemPrefab>k__BackingField:
     m_AssetGUID: 624f2ca751f0c4b4cbdcd40765e1a1f0
     m_SubObjectName: 
     m_SubObjectType: 
