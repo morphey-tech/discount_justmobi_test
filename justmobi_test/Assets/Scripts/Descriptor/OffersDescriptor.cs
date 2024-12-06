@@ -4,6 +4,7 @@ using System.Linq;
 using Descriptor.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Descriptor
 {
@@ -16,6 +17,9 @@ namespace Descriptor
 		[field: SerializeField]
 		public List<OfferData> Collection { get; private set; } = null!;
 
+		[field: SerializeField, Required]
+		public AssetReference OfferItemPrefab { get; private set; }
+		
 		public OfferData Require(string id)
 		{
 			return Collection.First(d => d.Id == id);

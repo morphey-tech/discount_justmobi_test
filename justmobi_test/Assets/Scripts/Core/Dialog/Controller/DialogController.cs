@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Core.Dialog.Controller
 {
-  public sealed class UIDialogController
+  public sealed class DialogController
   {
     private const string OPEN_ANIMATION_ID = "Open";
     private const string CLOSE_ANIMATION_ID = "Close";

@@ -12,7 +12,6 @@ namespace UI.Offer
 {
 	public sealed class OfferDialog : MonoBehaviour, IDialog
 	{
-		private const string OFFER_ITEM_ASSET_ID = "OfferItem";
 		private const int ITEMS_PER_ROW = 3;
 		
 		[SerializeField]
@@ -72,7 +71,7 @@ namespace UI.Offer
 			for (int i = 0; i < offerData.Items.Count; i++)
 			{
 				GameObject itemGo = await _uiService.CreateAsync
-						(OFFER_ITEM_ASSET_ID, i <= ITEMS_PER_ROW ? _itemsFirstRow : _itemsSecondRow);
+						(_offersDescriptor.OfferItemPrefab.AssetGUID, i <= ITEMS_PER_ROW ? _itemsFirstRow : _itemsSecondRow);
 				OfferItem item = itemGo.GetComponent<OfferItem>();
 				await item.Configure(offerData.Items[i]);
 			}
