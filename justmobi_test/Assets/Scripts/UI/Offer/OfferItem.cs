@@ -19,7 +19,8 @@ namespace UI.Offer
 		private UIService _uiService = null!;
 		
 		[Inject]
-		private void Construct(SpritesDescriptor spritesDescriptor, UIService uiService)
+		private void Construct(SpritesDescriptor spritesDescriptor,
+		                       UIService uiService)
 		{
 			_spritesDescriptor = spritesDescriptor;
 			_uiService = uiService;

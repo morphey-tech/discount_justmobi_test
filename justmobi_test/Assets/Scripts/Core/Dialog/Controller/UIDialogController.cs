@@ -10,18 +10,12 @@ namespace Core.Dialog.Controller
     private const string OPEN_ANIMATION_ID = "Open";
     private const string CLOSE_ANIMATION_ID = "Close";
     
-    public string DialogId { get; private set; }
     public IDialog? DialogInstance { get; private set; }
 
     public bool Opened { get; set; }
     public bool Hiding { get; set; }
 
     private DOTweenAnimation? _doTweenAnimation;
-
-    public UIDialogController(string dialogId)
-    {
-      DialogId = dialogId;
-    }
 
     public void SetDialog(GameObject dialogController)
     {

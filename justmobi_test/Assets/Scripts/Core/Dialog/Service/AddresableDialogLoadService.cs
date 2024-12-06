@@ -5,7 +5,7 @@ using VContainer;
 
 namespace Core.Dialog.Service
 {
-	public class AddresableDialogLoadService : IDialogLoader
+	public sealed class AddresableDialogLoadService : IDialogLoader
 	{
 		private readonly UIService _uiService;
 		

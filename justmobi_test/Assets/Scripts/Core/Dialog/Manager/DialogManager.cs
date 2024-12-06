@@ -31,7 +31,7 @@ namespace Core.Dialog.Manager
 
     public async UniTask<GameObject> ShowModalAsync(string dialogId, params object[] initParam)
     {
-      UIDialogController controller = new(dialogId);
+      UIDialogController controller = new();
       GameObject instance =
           await _dialogLoader.LoadDialogAsync(dialogId, _dialogContainer);
       controller.SetDialog(instance);
