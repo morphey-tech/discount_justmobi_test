@@ -62,9 +62,9 @@ namespace UI.Offer
 			_uiService = uiService;
 		}
 
-		async UniTask IDialog.Configure(params object[] initParam)
+		async UniTask IDialog.Configure(string offerId)
 		{
-			OffersDescriptor.OfferData offerData = _offersDescriptor.Require(initParam[0].ToString());
+			OffersDescriptor.OfferData offerData = _offersDescriptor.Require(offerId);
 			_headerText.text = offerData.Title;
 			_descriptionText.text = offerData.Description;
 

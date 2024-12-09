@@ -24,18 +24,18 @@ namespace Core.Dialog.Manager
       _dialogContainer = GameObject.Find(CONTAINER_NAME);
     }
 
-    public void ShowModal(string dialogId, params object[] initParam)
+    public void ShowModal(string dialogId, string offerId)
     {
-      ShowModalAsync(dialogId, initParam).Forget();
+      ShowModalAsync(dialogId, offerId).Forget();
     }
 
-    public async UniTask<GameObject> ShowModalAsync(string dialogId, params object[] initParam)
+    public async UniTask<GameObject> ShowModalAsync(string dialogId, string offerId)
     {
       DialogController controller = new();
       GameObject instance =
           await _dialogLoader.LoadDialogAsync(dialogId, _dialogContainer);
       controller.SetDialog(instance);
-      await controller.ShowAsync(initParam);
+      await controller.ShowAsync(offerId);
       _dialogStack.Push(controller);
       return instance;
     }

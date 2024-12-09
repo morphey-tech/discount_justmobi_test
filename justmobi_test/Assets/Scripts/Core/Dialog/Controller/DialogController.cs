@@ -23,9 +23,9 @@ namespace Core.Dialog.Controller
       _doTweenAnimation = dialogController.GetComponent<DOTweenAnimation>();
     }
 
-    public async UniTask ShowAsync(params object[] initParam)
+    public async UniTask ShowAsync(string offerId)
     {
-      DialogInstance!.Configure(initParam);
+      await DialogInstance!.Configure(offerId);
       if (_doTweenAnimation != null)
       {
         await WaitAnimation(OPEN_ANIMATION_ID);

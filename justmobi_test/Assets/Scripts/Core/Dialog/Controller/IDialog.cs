@@ -4,7 +4,7 @@ namespace Core.Dialog.Controller
 {
 	public interface IDialog
 	{
-		UniTask Configure(params object[] initParam);
+		UniTask Configure(string offerId);
 		void Show();
 		void Hide();
 	}
